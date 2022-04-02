@@ -25,18 +25,17 @@ function getRandomElement(array){
     return array[random];
 }
 
-function isUserExists(sender){
-    const index = users.indexOf(sender);
-    if (index!== -1) {
+function isUserExists(username){
+    const index = users.indexOf(username);
+    if (index!== -1){
         return true
-    } else {
-        return false
-    }    
+    }
+    return false
 }
 
 function response(room, msg, sender, isGroupChat, replier){
 
-    if (msg == '/포인트 현황' && !isUserExists(sender)){
+    if (msg == '/포인트 현황' && isUserExists(sender)){
         replier.reply(getRandomElement(emojis) + sender + ' (' + points[sender] + 'points)');
     }
 
